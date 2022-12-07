@@ -1,9 +1,11 @@
-# DEPLOY AN NODEJS APP IN DOCKER:
+# DEPLOY WITH DOCKER-COMPOSE:
+
+ docker-compose.yml based
 
 ## How Usage:
 
-1. docker build -t  <your_image_name> . 
+1. docker-compose up: to raise docker container-based system 
 
-2. docker run  --name <your_container_name> --rm -p 5000:3000 -v C:\dockerdata_pruebas\docker\index.js:/usr/src/index.js <your_image_name>
+2. docker-compose down: to shutdown docker container-based system
 
 Thanks a lot to Guido Vilariño.
