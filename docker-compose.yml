@@ -1,27 +1,23 @@
-#la version de docker compose a utilizar(obligatorio)
-#se debe vigilar bien la version porque
-#diferentes versiones ofrecen diferentes prestaciones
 version: "3.8"
 
-#los componentes de nuestro sistema
 services:
-  #componente o instancia que llamamos app
-  #podemos replicar n instancias de app en n contenedores
-  #para satisfacer demanda de nuestro sistema
   app:
-    #esoecificamos en todo servicio la imagen del cual procede
-    image: platziapp
-    #podemos tambien definir variables de entorno
+    #Ahora ponemos el contexto de build
+    build: .
     environment:
       MONGO_URL: "mongodb://db:27017/test"
-    #los contenedores de este servicio van a depender de este otro
-    #en este caso, db necesita ser levantado para que funcione app
-    #en caso contraro app no se levanta  
     depends_on:
       - db
-    #mapero de puertos
     ports:
       - "3000:3000"
-  #servicio que ejecutará nuestra base de datos
+    #opcion para hacer un volumen solo para este servicio
+    volumes:
+    #Ejemplo:  acontinuacion se montara lo que hay en el direcotrio actual
+    #en el directorio /usr/src del servicio
+      - .:/usr/src
+    #aqui, le decimos que de esa copia, omita el siguiente directorio
+    #donde estan las dependencias, sino, en el siguiente  build lo sobre escribe  
+      - /usr/src/node_modules 
+    command: npx nodemon --legacy-watch index.js  
   db:
     image: mongo

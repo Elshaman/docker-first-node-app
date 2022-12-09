@@ -18,5 +18,5 @@ EXPOSE 3000
 
 #other options:
 #CMD ["npx", "nodemon", "--legacy-watch", "index.js"]
-
-CMD ["npx", "nodemon" , "-L" , "index.js"]
+#CMD ["npx", "nodemon" , "-L" , "index.js"]
+CMD ["node" , "index.js"]

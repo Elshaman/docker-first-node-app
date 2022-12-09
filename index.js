@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
     if (err) {
       res.status(500).send('💥 VALE CALE  💥: ' + err);
     } else {
-      res.send('Me conecté a la DB! 😎');
+      res.send('Me conecté a la base de datos hurra!!!!!!!!! 😎');
       db.close();
     }
   });
